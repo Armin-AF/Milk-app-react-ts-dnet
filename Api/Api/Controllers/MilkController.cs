@@ -33,6 +33,49 @@ public class MilkController : ControllerBase
 
         return milk;
     }
+    
+    [HttpPost]
+    public ActionResult<Milk> AddMilk(Milk milk)
+    {
+        _milkList?.results.Add(milk);
+        return CreatedAtAction(nameof(GetMilk), new { id = milk.id }, milk);
+    }
+    
+    [HttpPut("{id}")]
+    public IActionResult UpdateMilk(string id, Milk milk)
+    {
+        if (id != milk.id)
+        {
+            return BadRequest();
+        }
+
+        var existingMilk = _milkList?.results.FirstOrDefault(m => m.id == id);
+        if (existingMilk is null)
+        {
+            return NotFound();
+        }
+
+        existingMilk.name = milk.name;
+        existingMilk.type = milk.type;
+        existingMilk.storage = milk.storage;
+        existingMilk.id = milk.id;
+
+        return NoContent();
+    }
+    
+    [HttpDelete("{id}")]
+    public IActionResult DeleteMilk(string id)
+    {
+        var milk = _milkList?.results.FirstOrDefault(m => m.id == id);
+        if (milk == null)
+        {
+            return NotFound();
+        }
+
+        _milkList?.results.Remove(milk);
+
+        return NoContent();
+    }
 }
 
 
