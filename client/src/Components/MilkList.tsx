@@ -25,17 +25,24 @@ function MilkList() {
                 placeholder="Search for a milk"
                 value={searchValue}
                 onChange={handleSearch}
+                className="bg-gray-200 rounded-lg py-2 px-4 block w-full appearance-none leading-normal"
             />
-            {filteredData.map(milk => (
-                <div key={milk.id}>
-                    <h2>{milk.name}</h2>
-                    <p>{milk.type}</p>
-                    <p>{milk.storage}</p>
-                </div>
-            ))}
+            <div className="flex flex-wrap">
+                {filteredData.map(milk => (
+                    <div key={milk.id} className="w-1/3 p-4">
+                        <div className="bg-white rounded-lg shadow-md">
+                            <img src="./milk.png" alt={milk.name} className="w-full"/>
+                            <div className="p-4">
+                                <h2 className="text-lg font-medium">{milk.name}</h2>
+                                <p className="text-gray-600">{milk.type}</p>
+                                <p className="text-gray-600">{milk.storage} liters</p>
+                            </div>
+                        </div>
+                    </div>
+                ))}
+            </div>
         </div>
     );
 }
 
 export default MilkList;
-
