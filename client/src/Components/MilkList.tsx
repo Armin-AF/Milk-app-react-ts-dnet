@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import milkImage from './milk.png';
+import { Navigate } from "react-router-dom";
+
 
 function MilkList() {
     const [milkData, setMilkData] = useState([]);
@@ -24,13 +26,14 @@ function MilkList() {
 
     if (searchValue !== '') {
         filteredData = filteredData.filter(milk => {
-            return milk.name.toLowerCase().includes(searchValue.toLowerCase());
+            // @ts-ignore
+            return milk["name"].toLowerCase().includes(searchValue.toLowerCase());
         });
     }
 
     if (milkType !== '') {
         filteredData = filteredData.filter(milk => {
-            return milk.type === milkType;
+            return milk["type"] === milkType;
         });
     }
 
@@ -65,14 +68,15 @@ function MilkList() {
             <div className="flex flex-wrap">
                 {filteredData.map((milk, index) => (
                     <div key={index} className="max-w-sm rounded overflow-hidden shadow-lg">
+
                         <img src={milkImage} alt="Milk" className="w-full" />
                         <div className="px-6 py-4">
-                            <div className="font-bold text-xl mb-2">{milk.name}</div>
+                            <div className="font-bold text-xl mb-2">{milk["name"]}</div>
                             <p className="text-gray-700 text-base">
-                                Type: {milk.type}
+                                Type: {milk["type"]}
                             </p>
                             <p className="text-gray-700 text-base">
-                                Storage: {milk.storage} liter
+                                Storage: {milk["storage"]} liter
                             </p>
                         </div>
                     </div>
