@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import milkImage from './milk.png';
 
 function MilkList() {
     const [milkData, setMilkData] = useState([]);
@@ -31,7 +32,7 @@ function MilkList() {
                 {filteredData.map(milk => (
                     <div key={milk.id} className="w-1/3 p-4">
                         <div className="bg-white rounded-lg shadow-md">
-                            <img src="./milk.png" alt={milk.name} className="w-full"/>
+                            <img src={milkImage} alt="Milk" className="w-full" />
                             <div className="p-4">
                                 <h2 className="text-lg font-medium">{milk.name}</h2>
                                 <p className="text-gray-600">{milk.type}</p>
