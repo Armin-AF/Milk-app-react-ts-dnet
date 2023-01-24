@@ -1,26 +1,29 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useParams } from 'react-router-dom';
 
 interface Props {
     id: string;
 }
 
-const ProductInfo: React.FunctionComponent<Props> = ({ id }) => {
+const ProductInfo: React.FunctionComponent<Props> = () => {
     const [milkData, setMilkData] = useState<any>({});
     const [quantity, setQuantity] = useState<number>(1);
+
+    let { id } = useParams();
 
     useEffect(() => {
         // Fetch data from API
         const fetchData = async () => {
-            const response = await axios.get(`/api/milk/${id}`);
+            const response = await axios.get(`https://localhost:7237/Milk/${id}`);
             setMilkData(response.data);
         };
-        fetchData();
+        fetchData().then(r => console.log(r));
     }, [id]);
 
     const handleOrder = async () => {
         // Update storage on backend
-        const response = await axios.put(`/api/milk/${id}`, {
+        const response = await axios.put(`https://localhost:7237/Milk/${id}`, {
             storage: milkData.storage - quantity,
         });
         setMilkData(response.data);
