@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import milkImage from './milk.png';
 import { Link } from "react-router-dom";
-import ProductInfo from "./ProductInfo";
 
 
 function MilkList() {
