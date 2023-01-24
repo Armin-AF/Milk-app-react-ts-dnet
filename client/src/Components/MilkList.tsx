@@ -68,7 +68,9 @@ function MilkList() {
             <div className="flex flex-wrap justify-center text-center">
                 {filteredData.map((milk, index) => (
                     <div key={index} className="max-w-sm rounded-lg overflow-hidden shadow-lg m-4 bg-pink-200">
-                        <img src={milkImage} alt="Milk" className="w-full" />
+                        <div className="px-6 py-4">
+                            <img src={milkImage} alt="Milk" className="w-full" />
+                        </div>
                         <div className="px-6 py-4">
                             <div className="font-bold text-xl mb-2 text-pink-600">{milk["name"]}</div>
                             <p className="text-gray-700 text-base">
@@ -79,10 +81,11 @@ function MilkList() {
                             </p>
                         </div>
                         <Link to={`/product/${milkData[index]["id"]}`}>
-                            <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full">
-                                View Product
-                            </button>
-
+                            <div className="px-6 py-4">
+                                <button className="bg-blue-500 hover:bg-red-blue text-white font-bold py-2 px-4 rounded-full ">
+                                    View Product
+                                </button>
+                            </div>
                         </Link>
                     </div>
                 ))}
