@@ -48,7 +48,7 @@ const ProductInfo: React.FunctionComponent<Props> = (id) => {
                                 min={1}
                                 max={milkData.storage}
                                 value={quantity}
-                                onChange={(e) => setQuantity(e.target.value)}
+                                onChange={(e) => setQuantity(e.target.valueAsNumber)}
                             />
                         </label>
                         <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" onClick={handleOrder}>
