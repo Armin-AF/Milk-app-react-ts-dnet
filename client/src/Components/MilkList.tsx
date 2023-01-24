@@ -38,18 +38,18 @@ function MilkList() {
     }
 
     return (
-        <div>
+        <div className="mx-auto flex flex-wrap items-center justify-center py-6 px-6">
             <input
                 type="text"
                 placeholder="Search for a milk"
                 value={searchValue}
                 onChange={handleSearch}
-                className="bg-gray-200 rounded-lg py-2 px-4 block w-full appearance-none leading-normal"
+                className="bg-gray-200 rounded-lg py-2 px-4 block w-full appearance-none leading-normal text-center"
             />
             <select
                 value={milkType}
                 onChange={handleMilkTypeChange}
-                className="bg-gray-200 rounded-lg py-2 px-4 block w-full appearance-none leading-normal"
+                className="bg-gray-400 rounded-lg py-1 px-4 block w-full appearance-none leading-normal text-center"
             >
                 <option value="">All Types</option>
                 <option value="Whole milk">Whole Milk</option>
@@ -64,14 +64,13 @@ function MilkList() {
                 <option value="Hemp milk">Hemp Milk</option>
                 <option value="Cashew milk">Cashew Milk</option>
             </select>
-            <h1 className="text-1xl font-bold">{milkData.length} Products</h1>
-            <div className="flex flex-wrap">
+            <h1 className="text-1xl font-bold text-pink-600">{milkData.length} Products</h1>
+            <div className="flex flex-wrap justify-center text-center">
                 {filteredData.map((milk, index) => (
-                    <div key={index} className="max-w-sm rounded overflow-hidden shadow-lg">
-
+                    <div key={index} className="max-w-sm rounded-lg overflow-hidden shadow-lg m-4 bg-pink-200">
                         <img src={milkImage} alt="Milk" className="w-full" />
                         <div className="px-6 py-4">
-                            <div className="font-bold text-xl mb-2">{milk["name"]}</div>
+                            <div className="font-bold text-xl mb-2 text-pink-600">{milk["name"]}</div>
                             <p className="text-gray-700 text-base">
                                 Type: {milk["type"]}
                             </p>
@@ -80,11 +79,10 @@ function MilkList() {
                             </p>
                         </div>
                         <Link to={`/product/${milkData[index]["id"]}`}>
-                            <button
-                                className="bg-red-300 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full"
-                            >
+                            <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full">
                                 View Product
                             </button>
+
                         </Link>
                     </div>
                 ))}

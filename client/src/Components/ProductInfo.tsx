@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import milkImage from './milk.png';
 
 interface Props {
     id: string;
 }
 
-const ProductInfo: React.FunctionComponent<Props> = (id) => {
+const ProductInfo: React.FunctionComponent<Props> = () => {
     const [milkData, setMilkData] = useState<any>({});
     const [quantity, setQuantity] = useState<number>(1);
+    let { id } = useParams();
 
     useEffect(() => {
         // Fetch data from API
@@ -29,34 +32,39 @@ const ProductInfo: React.FunctionComponent<Props> = (id) => {
     };
 
     return (
-        <div>
-            {milkData && (
-                <div>
-                    <img src={`./milk.png`} alt={milkData.name} className="w-full" />
-                    <div className="px-6 py-4">
-                        <div className="font-bold text-xl mb-2">{milkData.name}</div>
-                        <p className="text-gray-700 text-base">
-                            Type: {milkData.type}
-                        </p>
-                        <p className="text-gray-700 text-base">
-                            Storage: {milkData.storage} liter
-                        </p>
-                        <label>
-                            Quantity:
-                            <input
-                                type="number"
-                                min={1}
-                                max={milkData.storage}
-                                value={quantity}
-                                onChange={(e) => setQuantity(e.target.valueAsNumber)}
-                            />
-                        </label>
-                        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" onClick={handleOrder}>
-                            Order
-                        </button>
-                    </div>
+        <div className="flex items-center justify-center h-screen">
+            <div className="w-full max-w-md">
+                <div className="bg-pink-200 rounded-lg overflow-hidden">
+                    {milkData && (
+                        <div className="p-6">
+                            <img src={milkImage} alt="Milk" className="w-full h-128 object-cover" />
+                            <div className="px-6 py-4">
+                                <div className="font-bold text-xl mb-2">{milkData.name}</div>
+                                <p className="text-gray-700 text-base">
+                                    Type: {milkData.type}
+                                </p>
+                                <p className="text-gray-700 text-base">
+                                    Storage: {milkData.storage} liter
+                                </p>
+                                <label className="block font-medium text-sm mb-2">
+                                    Quantity:
+                                </label>
+                                <input
+                                    type="number"
+                                    min={1}
+                                    max={milkData.storage}
+                                    value={quantity}
+                                    onChange={(e) => setQuantity(e.target.valueAsNumber)}
+                                    className="w-full bg-white rounded-md border border-gray-400 py-2 px-3 text-base leading-5 focus:outline-none focus:border-blue-500"
+                                />
+                                <button className="bg-blue-500 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md mt-4" onClick={handleOrder}>
+                                    Order
+                                </button>
+                            </div>
+                        </div>
+                    )}
                 </div>
-            )}
+            </div>
         </div>
     );
 };
