@@ -64,7 +64,9 @@ function MilkList() {
                 <option value="Hemp milk">Hemp Milk</option>
                 <option value="Cashew milk">Cashew Milk</option>
             </select>
-            <h1 className="text-1xl font-bold text-pink-600">{milkData.length} Products</h1>
+            <div className="justify-center text-center">
+                <h1 className="text-1xl font-bold text-pink-600">{filteredData.length} Products</h1>
+            </div>
             <div className="flex flex-wrap justify-center text-center">
                 {filteredData.map((milk, index) => (
                     <div key={index} className="max-w-sm rounded-lg overflow-hidden shadow-lg m-4 bg-pink-200">

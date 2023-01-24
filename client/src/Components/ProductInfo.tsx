@@ -23,12 +23,13 @@ const ProductInfo: React.FunctionComponent<Props> = () => {
     }, [id]);
 
     const handleOrder = async () => {
-        console.log("Ordering milk " + quantity);
         // Update storage on backend
         const response = await axios.patch(`https://localhost:7237/Milk/${id}`, {
-            quantity: milkData.quantity - quantity < 0 ? 0 : milkData.quantity - quantity // If quantity is less than 0, set to 0
+            storage: milkData.storage - quantity,
         });
         setMilkData(response.data);
+        // Show success message
+        alert(`Successfully ordered ${quantity} liter(s) of ${milkData.name}`);
     };
 
     return (
