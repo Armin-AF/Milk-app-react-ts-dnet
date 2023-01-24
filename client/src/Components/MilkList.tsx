@@ -79,7 +79,7 @@ function MilkList() {
                                 Storage: {milk["storage"]} liter
                             </p>
                         </div>
-                        <Link to={`/product/${milkData.id}`}>
+                        <Link to={`/product/${milkData[index]["id"]}`}>
                             <button
                                 className="bg-red-300 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full"
                             >

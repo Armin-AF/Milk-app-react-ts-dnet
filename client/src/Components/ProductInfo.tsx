@@ -1,16 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
 
 interface Props {
     id: string;
 }
 
-const ProductInfo: React.FunctionComponent<Props> = () => {
+const ProductInfo: React.FunctionComponent<Props> = (id) => {
     const [milkData, setMilkData] = useState<any>({});
     const [quantity, setQuantity] = useState<number>(1);
-
-    let { id } = useParams();
 
     useEffect(() => {
         // Fetch data from API
