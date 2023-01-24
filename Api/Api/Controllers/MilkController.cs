@@ -10,10 +10,10 @@ namespace Api.Controllers;
 public class MilkController : ControllerBase
 {
     readonly MilkList? _milkList;
+    const string Path = "/Users/rminafa/Projects/Milk-app-react-ts-dnet/Api/Api/Database/milk.json";
 
     public MilkController(){
-        const string path = "/Users/rminafa/Projects/Milk-app-react-ts-dnet/Api/Api/Database/milk.json";
-        _milkList = JsonConvert.DeserializeObject<MilkList>(System.IO.File.ReadAllText(path));
+        _milkList = JsonConvert.DeserializeObject<MilkList>(System.IO.File.ReadAllText(Path));
     }
 
     [HttpGet]
@@ -42,26 +42,24 @@ public class MilkController : ControllerBase
     }
     
     [HttpPut("{id}")]
-    public IActionResult UpdateMilk(string id, Milk milk)
+    public IActionResult UpdateMilkStorage(string id, [FromBody] int newStorage)
     {
-        if (id != milk.id)
-        {
-            return BadRequest();
-        }
-
-        var existingMilk = _milkList?.results.FirstOrDefault(m => m.id == id);
-        if (existingMilk is null)
+        var milk = _milkList?.results.FirstOrDefault(m => m.id == id);
+        if (milk == null)
         {
             return NotFound();
         }
 
-        existingMilk.name = milk.name;
-        existingMilk.type = milk.type;
-        existingMilk.storage = milk.storage;
-        existingMilk.id = milk.id;
+        milk.storage = newStorage;
+
+        //Serialize the updated milk list object and write it back to the json file
+        var updatedMilkList = JsonConvert.SerializeObject(_milkList);
+        System.IO.File.WriteAllText(Path, updatedMilkList);
 
         return NoContent();
     }
+
+
     
     [HttpDelete("{id}")]
     public IActionResult DeleteMilk(string id)
