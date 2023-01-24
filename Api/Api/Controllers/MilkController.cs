@@ -41,8 +41,8 @@ public class MilkController : ControllerBase
         return CreatedAtAction(nameof(GetMilk), new { id = milk.id }, milk);
     }
     
-    [HttpPut("{id}")]
-    public IActionResult UpdateMilkStorage(string id, [FromBody] int newStorage)
+    [HttpPatch("{id}")]
+    public IActionResult UpdateMilkStorage(string id, [FromBody] int milkStorage)
     {
         var milk = _milkList?.results.FirstOrDefault(m => m.id == id);
         if (milk == null)
@@ -50,16 +50,10 @@ public class MilkController : ControllerBase
             return NotFound();
         }
 
-        milk.storage = newStorage;
-
-        //Serialize the updated milk list object and write it back to the json file
-        var updatedMilkList = JsonConvert.SerializeObject(_milkList);
-        System.IO.File.WriteAllText(Path, updatedMilkList);
-
+        milk.storage = milkStorage;
+        System.IO.File.WriteAllText(Path, JsonConvert.SerializeObject(_milkList));
         return NoContent();
     }
-
-
     
     [HttpDelete("{id}")]
     public IActionResult DeleteMilk(string id)
