@@ -42,7 +42,7 @@ const ProductInfo: React.FunctionComponent<Props> = () => {
                     </button>
                 </Link>
             </div>
-            <div className="flex items-center justify-center h-screen text-center">
+            <div className="flex items-center justify-center text-center">
                 <div className="w-full max-w-md">
                     <div className="bg-pink-200 rounded-lg overflow-hidden">
                         {milkData && (
