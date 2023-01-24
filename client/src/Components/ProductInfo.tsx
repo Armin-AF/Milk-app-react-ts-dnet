@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from "react-router-dom";
 import axios from 'axios';
 import milkImage from './milk.png';
 import Header from "./Header";
@@ -35,6 +35,13 @@ const ProductInfo: React.FunctionComponent<Props> = () => {
     return (
         <div>
             <Header />
+            <div className="flex items-center justify-content-around text-center">
+                <Link to={`/`}>
+                    <button className="bg-red-500 hover:bg-red-700 text-white font-medium py-2 px-4 rounded-md mt-4">
+                        Back
+                    </button>
+                </Link>
+            </div>
             <div className="flex items-center justify-center h-screen text-center">
                 <div className="w-full max-w-md">
                     <div className="bg-pink-200 rounded-lg overflow-hidden">
@@ -53,13 +60,14 @@ const ProductInfo: React.FunctionComponent<Props> = () => {
                                         Quantity:
                                     </label>
                                     <input
-                                        type="number"
+                                        type="range"
                                         min={1}
                                         max={milkData.storage}
                                         value={quantity}
                                         onChange={(e) => setQuantity(e.target.valueAsNumber)}
                                         className="w-full bg-white rounded-md border border-gray-400 py-2 px-3 text-base leading-5 focus:outline-none focus:border-blue-500"
                                     />
+                                    <div className="text-center">{quantity} liter(s)</div>
                                     <button className="bg-blue-500 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md mt-4" onClick={handleOrder}>
                                         Order
                                     </button>
@@ -72,5 +80,4 @@ const ProductInfo: React.FunctionComponent<Props> = () => {
         </div>
     );
 };
-
 export default ProductInfo;
