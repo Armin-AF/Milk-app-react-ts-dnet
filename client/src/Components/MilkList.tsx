@@ -38,33 +38,35 @@ function MilkList() {
     }
 
     return (
-        <div className="mx-auto flex flex-wrap items-center justify-center py-6 px-6">
-            <input
-                type="text"
-                placeholder="Search for a milk"
-                value={searchValue}
-                onChange={handleSearch}
-                className="bg-gray-200 rounded-lg py-2 px-4 block w-full appearance-none leading-normal text-center"
-            />
-            <select
-                value={milkType}
-                onChange={handleMilkTypeChange}
-                className="bg-gray-400 rounded-lg py-1 px-4 block w-full appearance-none leading-normal text-center"
-            >
-                <option value="">All Types</option>
-                <option value="Whole milk">Whole Milk</option>
-                <option value="Oat milk">Oat Milk</option>
-                <option value="Pea milk">Pea Milk</option>
-                <option value="Almond milk">Almond Milk</option>
-                <option value="Rice milk">Rice Milk</option>
-                <option value="Coconut milk">Coconut Milk</option>
-                <option value="Soy milk">Soy Milk</option>
-                <option value="Walnut milk">Walnut Milk</option>
-                <option value="Macadamia milk">Macadamia Milk</option>
-                <option value="Hemp milk">Hemp Milk</option>
-                <option value="Cashew milk">Cashew Milk</option>
-            </select>
-            <div className="justify-center text-center">
+        <div>
+            <div className="flex justify-center py-4 px-8">
+                <input
+                    type="text"
+                    placeholder="Search for a milk"
+                    value={searchValue}
+                    onChange={handleSearch}
+                    className="bg-gray-200 rounded-lg py-2 px-4 block w-3/4 appearance-none leading-normal text-center inline-block"
+                />
+                <select
+                    value={milkType}
+                    onChange={handleMilkTypeChange}
+                    className="bg-gray-400 rounded-lg py-1 px-4 block w-1/4 appearance-none leading-normal text-center inline-block ml-2"
+                >
+                    <option value="">All Types</option>
+                    <option value="Whole milk">Whole Milk</option>
+                    <option value="Oat milk">Oat Milk</option>
+                    <option value="Pea milk">Pea Milk</option>
+                    <option value="Almond milk">Almond Milk</option>
+                    <option value="Rice milk">Rice Milk</option>
+                    <option value="Coconut milk">Coconut Milk</option>
+                    <option value="Soy milk">Soy Milk</option>
+                    <option value="Walnut milk">Walnut Milk</option>
+                    <option value="Macadamia milk">Macadamia Milk</option>
+                    <option value="Hemp milk">Hemp Milk</option>
+                    <option value="Cashew milk">Cashew Milk</option>
+                </select>
+            </div>
+            <div className="justify-center text-center py-6">
                 <h1 className="text-1xl font-bold text-pink-600">{filteredData.length} Products</h1>
             </div>
             <div className="flex flex-wrap justify-center text-center">
