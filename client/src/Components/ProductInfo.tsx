@@ -3,6 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import axios from 'axios';
 import milkImage from './milk.png';
 import Header from "./Header";
+import Footer from "./Footer";
 
 interface Props {
     id: string;
@@ -90,6 +91,7 @@ const ProductInfo: React.FunctionComponent<Props> = () => {
                     </div>
                 </div>
             </div>
+
         </div>
     );
 };

@@ -78,9 +78,13 @@ function MilkList() {
                             <p className="text-gray-700 text-base">
                                 Type: {milk["type"]}
                             </p>
-                            <p className="text-gray-700 text-base">
-                                Storage: {milk["storage"]} liter
-                            </p>
+                            <div>
+                                <p className="text-gray-700 text-base">
+                                    Storage: {milk["storage"]} liter
+                                </p>
+                                {milk["storage"] === 0 ? <p className="text-red-700 text-base">Out of stock</p> : null}
+                            </div>
+
                         </div>
                         <Link to={`/product/${milkData[index]["id"]}`}>
                             <div className="px-6 py-4">
