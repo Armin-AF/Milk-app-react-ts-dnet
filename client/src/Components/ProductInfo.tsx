@@ -23,14 +23,27 @@ const ProductInfo: React.FunctionComponent<Props> = () => {
     }, [id]);
 
     const handleOrder = async () => {
-        // Update storage on backend
-        const response = await axios.patch(`https://localhost:7237/Milk/${id}`, {
-            storage: milkData.storage - quantity,
-        });
-        setMilkData(response.data);
-        // Show success message
-        alert(`Successfully ordered ${quantity} liter(s) of ${milkData.name}`);
+        const storage = milkData.storage - quantity;
+        try {
+            const requestOptions = {
+                method: 'PATCH',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(storage)
+            }
+            const response = await fetch(`https://localhost:7237/Milk/${id}`, requestOptions);
+            if (response.ok) {
+                // Update the component's state with the updated storage
+                setMilkData({...milkData, storage: storage});
+                // Show success message
+                alert(`Successfully ordered ${quantity} liter(s) of ${milkData.name}`);
+            } else {
+                alert('Failed to update storage');
+            }
+        } catch (error) {
+            console.log(error);
+        }
     };
+
 
     return (
         <div>
