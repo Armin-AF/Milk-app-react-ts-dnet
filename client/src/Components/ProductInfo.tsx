@@ -70,29 +70,37 @@ const ProductInfo: React.FunctionComponent<Props> = () => {
                                     <p className="text-gray-700 text-base">
                                         Storage: {milkData.storage} liter
                                     </p>
-                                    <label className="block font-medium text-sm mb-2">
-                                        Quantity:
-                                    </label>
-                                    <input
-                                        type="range"
-                                        min={1}
-                                        max={milkData.storage}
-                                        value={quantity}
-                                        onChange={(e) => setQuantity(e.target.valueAsNumber)}
-                                        className="w-full bg-white rounded-md border border-gray-400 py-2 px-3 text-base leading-5 focus:outline-none focus:border-blue-500"
-                                    />
-                                    <div className="text-center">{quantity} liter(s)</div>
-                                    <button className="bg-blue-500 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md mt-4" onClick={handleOrder}>
+                                    {milkData.storage > 0 ? (
+                                        <>
+                                        <label className="block font-medium text-sm mb-2">
+                                            Quantity:
+                                        </label>
+                                        <input
+                                            type="range"
+                                            min={1}
+                                            max={milkData.storage}
+                                            value={quantity}
+                                            onChange={(e) => setQuantity(e.target.valueAsNumber)}
+                                            className="w-full bg-white rounded-md border border-gray-400 py-2 px-3 text-base leading-5 focus:outline-none focus:border-blue-500"
+                                        />
+                                        <div className="text-center">{quantity} liter(s)</div>
+                                        <button className="bg-blue-500 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md mt-4" onClick={handleOrder}>
                                         Order
-                                    </button>
+                                        </button>
+                                        </>
+                                    ) : (
+                                        // Show out of stock message in red bold text
+                                        <div className="text-center text-red-500 font-bold">Out of stock</div>
+                                    )}
                                 </div>
                             </div>
                         )}
                     </div>
                 </div>
             </div>
-
+            <Footer />
         </div>
     );
 };
+
 export default ProductInfo;
