@@ -87,7 +87,7 @@ function MilkList() {
                         </div>
                         <Link to={`/product/${milkData[index]["id"]}`}>
                             <div className="px-6 py-4">
-                                <button className="bg-blue-500 hover:bg-red-blue text-white font-bold py-2 px-4 rounded-full ">
+                                <button className={`bg-blue-500 hover:bg-red-blue text-white font-bold py-2 px-4 rounded-full ${milk["storage"] === 0 ? "cursor-not-allowed bg-gray-500" : ""}`}>
                                     View Product
                                 </button>
                             </div>
