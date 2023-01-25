@@ -10,7 +10,7 @@ When a customer clicks on a product card, they will be redirected to a product i
 
 This project is designed to be easy to use and navigate, making it easy for customers to find the type of milk they are looking for and place orders quickly. With this website, the Milk Store can manage their increased business more efficiently and provide their customers with a seamless shopping experience.
 
-<img width="437" alt="image" src="https://user-images.githubusercontent.com/90157472/214294964-f39d43f7-0252-4781-8f6e-0003a72bb08f.png">
+<img width="889" alt="image" src="https://user-images.githubusercontent.com/90157472/214524227-afa46da4-7f59-4618-85ce-6e5646b9ddfd.png">
 
 
 ## To run the application, you will need to have the following software installed:
