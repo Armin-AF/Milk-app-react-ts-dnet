@@ -17,7 +17,7 @@ This project is designed to be easy to use and navigate, making it easy for cust
 
 - Node.js
 - .Net Core SDK
-- Visual Studio Code or a similar code editor
+- Rider, WebStorm, Visual Studio Code or a similar code editor
 - A local database
 
 ## Steps to run the app:
