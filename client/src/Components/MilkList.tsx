@@ -79,10 +79,9 @@ function MilkList() {
                                 Type: {milk["type"]}
                             </p>
                             <div>
-                                <p className="text-gray-700 text-base">
+                                {milk["storage"] === 0 ? <p className="text-red-700 text-base">Out of stock</p> : <p className="text-gray-700 text-base">
                                     Storage: {milk["storage"]} liter
-                                </p>
-                                {milk["storage"] === 0 ? <p className="text-red-700 text-base">Out of stock</p> : null}
+                                </p>}
                             </div>
 
                         </div>
